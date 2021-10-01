@@ -1,2 +1,4 @@
-./*.json
-./*.txt
+/*.json
+/raffle.json
+/raffles.json
+/result.txt
