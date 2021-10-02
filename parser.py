@@ -3,7 +3,7 @@ from datetime import datetime
 
 file = open('raffle.json') 
 data = json.load(file)
-access = data['Default']['@KaiiHudson']['$AccountWide']['prizes']['entrants']
+access = data['entrants']
 
 def getTimestampsMin(list_):
     timestamps = list(d.get('timestamp', 0) for d in list_)
