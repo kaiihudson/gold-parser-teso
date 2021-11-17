@@ -19,6 +19,10 @@ def names (list_):
     names = [sub['userName'] for sub in list_]
     names = list(set(names))
     return names
+def fixName (list_):
+    name = [sub["userName"] for sub in list_]
+    fixedName = name[0].replace('@', '')
+    return fixedName
 def allTickets(list_):
     tickets = sum(d.get('tickets') for d in list_)
     return tickets
@@ -36,9 +40,9 @@ endfile = open("result.txt", "w")
 print("from:", getTimestampsMin(access),"to:", getTimestampsMax(access), file = endfile)
 print("total tickets:", allTickets(access), file = endfile)
 for name in names(access):
+    safeName = fixName(filterList(name, access))
     ticketsToName = tickets(filterList(name, access))
     realTickets = ticketsPer(filterList(name,access))
-    print(name, "had", realTickets, file= endfile)
-    print("/raffle tickets add weekly", name, ticketsToName, file = endfile)
+    print(safeName, "had", realTickets, file= endfile)
+    print("!raffle tickets add weekly", safeName, ticketsToName, file = endfile)
 endfile.close()
-file.close()
